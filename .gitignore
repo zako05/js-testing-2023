@@ -1,0 +1,9 @@
+# misc
+.DS_Store
+tags*
+
+# dependencies
+/node_modules
+
+# todo
+*.todo.md
