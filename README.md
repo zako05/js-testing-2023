@@ -2,6 +2,10 @@
 
 ## Installation
 
+Install Node.js via [nvm](https://github.com/nvm-sh/nvm)
+
+`nvm install 20`
+
 Install Vite
 
 `cd 'project-name' && yarn create vite .`
@@ -10,7 +14,7 @@ or
 
 `yarn create vite 'project-name'`
 
-Install reveal.js
+Install Reveal.js
 
 `yarn add reveal.js`
 
