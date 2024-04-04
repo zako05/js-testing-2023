@@ -138,6 +138,7 @@ describe('foo', () => {
                   <li>✅ run in browser</li>
                   <li>✅ jQuery alike</li>
                   <li>✅ asynchronous</li>
+                  <li>✅ wait-retry-timeout</li>
                    <li>assertion</li>
                    <ul>
                      <li>✅ automatically retry</li>
@@ -145,6 +146,7 @@ describe('foo', () => {
                    </ul>
                   <li>✅ component testing</li>
                   <li>✅ Cypress Cloud</li>
+                  <li>✅ documentation</li>
                 </ul>
               </div>
               <div class="col">
@@ -164,11 +166,122 @@ describe('foo', () => {
           <section>
             <h3>Playwright</h3>
           </section>
-          <section><h4>Playwright Test Runner</h4></section>
-          <section><h4>Playwright is asynchronous</h4></section>
-          <section><h4>Playwright is paralel</h4></section>
-          <section><h4>Playwrigth Trace Viewer</h4></section>
-          <section><h4>Playwright Fixtures</h4></section>
+          <section>
+            <h4>Playwright is asynchronous</h4>
+            <ul class="pw-font">
+              <li class="fragment custom blur">
+                Playwright is fundamentally designed around asynchronous programming concepts in JavaScript
+              </li>
+              <li class="fragment custom blur">
+                Playwright heavily uses Promises to manage these asynchronous operations
+              </li>
+              <li class="fragment custom blur">
+                <code>async/await</code>
+                <span>as cleaner syntax for working with Promises</span>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h4>Playwright is paralel</h4>
+            <ul class="pw-font">
+              <li class="fragment custom blur">
+                all tests run in worker processes, orchestrated by the test runner
+              </li>
+              <li class="fragment custom blur">
+                tests in a single file are run in order, in the same worker process by default
+              </li>
+              <li class="fragment custom blur">limit workers or disable them</li>
+              <li class="fragment custom blur">sharding</li>
+              <ul class="fragment custom blur">
+                <li>
+                  scale the tests execution among multiple machines simultaneously
+                </li>
+                <pre>
+                  <code>
+npx playwright test --shard=1/4
+npx playwright test --shard=2/4
+npx playwright test --shard=3/4
+npx playwright test --shard=4/4
+                  </code>
+                </pre>
+                <li>e.g. GitHub Actions supports sharding tests between multiple jobs</li>
+              </ul>
+            </ul>
+          </section>
+          <section>
+            <h4>Playwright Test</h4>
+            <ul>
+              <li class="fragment custom blur">Playwright Library + different test runner, e.g. Jest or Vitest</li>
+              <li class="fragment custom blur">Playwright Test, which is test runner by itself</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Playwrigth Trace Viewer</h4>
+            <ul class="pw-font">
+              <li class="fragment custom blur">
+                capture a detailed trace of the test execution
+              </li>
+              <li class="fragment custom blur">normally run in CI</li>
+              <li class="fragment custom blur">
+                tracing can be forced to be on locally 
+                <pre>
+                  <code>npx playwright test --trace on</code>
+                </pre>
+              </li>
+              <li class="fragment custom blur">
+                report containes "time travel", actions, console, network, source code, etc.
+              </li>
+              <li class="fragment custom blur">DOM snapshoot</li>
+            </ul>
+          </section>
+          <section>
+            <img class="" src="./images/pw-trace-viewer.gif" alt="">
+          </section>
+          <section>
+            <h4>Playwright Fixtures</h4>
+            <ul class="pw-font">
+              <li class="fragment custom blur">
+                Playwright Test is based on the concept of test fixtures,
+                which are used to establish the environment for each test
+              </li>
+              <li class="fragment custom blur">build-in fixuters</li>
+              <ul class="fragment custom blur">
+                <li>"page - isoleted page for the current test run"</li>
+                <li>"request - isoleted APIRequestContext instance"</li>
+              </ul>
+              <li class="fragment custom blur">encapsulate setup and teardown</li>
+              <li class="fragment custom blur">reusable between test files, e.g. page</li>
+              <li class="fragment custom blur">on-demand</li>
+              <li class="fragment custom blur">simplify grouping - no longer need to wrap the tests in describe</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Summary</h4>
+            <div class="container summary">
+              <div class="col">
+                <ul class="fragment custom blur">
+                  <li>✅ Chrome Devtools Protocol, and its variations for Firefox and Webkit</li>
+                  <li>✅ asynchronous</li>
+                  <li>✅ wait-retry-timeout</li>
+                   <li>assertion</li>
+                   <ul>
+                     <li>✅ automatically retry</li>
+                     <li>✅ implicit assertions</li>
+                   </ul>
+                  <li>✅ parallelism</li>
+                  <li>✅ multilanguage: JS/TS, Java, C#, Python</li>
+                  <li>✅ zero dependencies</li>
+                </ul>
+              </div>
+              <div class="col">
+                <ul class="fragment custom blur">
+                  <li>❌ component testing - still experimental</li>
+                  <li>❌ documentation altough it's not all bad</li>
+                  <li>❌ steeper learning curve</li>
+                </ul>
+              </div>
+            </div>
+          </section>
           <section>
             <h3>Puppeteer</h3>
           </section>
