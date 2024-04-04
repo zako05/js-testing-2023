@@ -2,21 +2,205 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/png" href="./images/js-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>State of JS Testing 2023</title>
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
-        <section>State of JS Testing 2023</section>
-        <section>smth
-          <section>1</section>
-          <section>2</section>
-          <section>3</section>
+        <img id="instea-logo" src="./images/instea-logo.png" alt="Instea">
+        <section data-transition="convex">
+          <h1>
+            State of
+            <img id="js-logo" src="./images/js-logo.png" alt="JS">
+            Testing 2023
+          </h1> 
+        </section>
+        <section data-transition="convex">
+          <h2>Javascript Testing: Status & Trends</h2>
+          <ul>
+            <li class="fragment custom blur">State of Javascript Testing 2023</li>
+            <li class="fragment custom blur">JS Testing Frameworks: Cons & Pros</li>
+            <li class="fragment custom blur">Playwright vs Cypress vs Puppeteer</li>
+            <li class="fragment custom blur">Trends in JS Testing & Beyond</li>
+          </ul>
+        </section>
+        <section data-transition="convex">
+          <section>
+            <h3>State of Javascript Testing 2023</h3>
+          </section>
+          <section data-transition="zoom">
+            <h4>GitHub Stars History - E2E Test Frameworks</h4>
+            <canvas id="github-stars-history-e2e"></canvas>
+          </section>
+          <section data-transition="zoom">
+            <h4>GitHub Stars History - Unit Test Frameworks</h4>
+            <canvas id="github-stars-history-unit"></canvas>
+          </section>
+          <section data-transition="zoom">
+            <h4>NPM Stats - E2E Test Frameworks</h4>
+            <canvas id="npm-stats-e2e"></canvas>
+          </section>
+          <section data-transition="zoom">
+            <h4>NPM Stats - Unit Test Frameworks</h4>
+            <canvas id="npm-stats-unit"></canvas>
+          </section>
+          <section data-transition="zoom">
+            <h4>State of JS Testing 2022</h4>
+            <img class="js-state-2022-rank" src="./images/testing_experience_ranking-2022.png" alt="">
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>JS Testing Frameworks - Core Concepts</h3>
+          </section>
+          <section>
+            <h3>Cypress.io</h3>
+          </section>
+          <section>
+            <h4>Cypress Test Runner</h4>
+          </section>
+          <section>
+            <h4>Cypress is / is not like jQuery</h4>
+            <ul class="r-fit-text">
+              <li class="fragment custom blur">
+                <span>Cy bundles jQuery and exposes many of its DOM traversal methods</span>
+                <pre>
+                  jQuery
+                  <code>$('.my-selector')</code>
+                  Cypress
+                  <code>cy.get('.my-selector')</code>
+                </pre>
+              </li>
+              <li class="fragment custom blur">
+                <span>Cy can't simple assign returned object from selector to a variable</span>
+                <pre>
+                  <code>const $cyElement = cy.get('.element')</code>
+                </pre>
+              </li>
+              <li class="fragment custom blur">Cy wraps all DOM queries with wait-retry-timeout logic</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Cypress is asynchronous</h4>
+            <ul class="r-fit-text">
+              <li class="fragment custom blur">Cy commands are enqueued to be run later</li>
+              <!-- <li class="fragment custom blur">commands return immediately, having only been appended to a queue to be executed at a later time</li> -->
+              <!-- <li class="fragment custom blur">commands are manage in a highly controlled deterministic way</li> -->
+              <li class="fragment custom blur">Cy commands run serially, never in parallel because of its wait-retry ability</li>
+              <li class="fragment custom blur">Cy commands are not Promises</li>
+              <ul>
+                <li class="fragment custom blur">
+                  <span>can't be awaited (await/async)</span>
+                  <pre>
+                    <code>
+it('foo', async () => {
+  const form = await cy.get('form')
+})
+                    </code>
+                  </pre>
+                </li>
+                <li class="fragment custom blur">can't use <code>.catch</code> error handler</li>
+                <li class="fragment custom blur"><code>cy.then()</code> command isn't promise</li>
+              </ul>
+            </ul>
+          </section>
+          <section>
+            <h4>Cypress Aliases</h4>
+            <pre>
+              <code>
+describe('foo', () => {
+  beforeEach(() => {
+    cy.get('.button').as('button')
+  })
+
+  it('test', function () {
+    const button = this.button 
+  })
+
+  // or
+
+  it('test', () => {
+    cy.get('@button').then(btn => {
+      const button = btn 
+    })
+  })
+})
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h4>Summary</h4>
+            <div class="container summary">
+              <div class="col">
+                <ul class="fragment custom blur">
+                  <li>✅ run in browser</li>
+                  <li>✅ jQuery alike</li>
+                  <li>✅ asynchronous</li>
+                   <li>assertion</li>
+                   <ul>
+                     <li>✅ automatically retry</li>
+                     <li>✅ implicit assertions</li>
+                   </ul>
+                  <li>✅ component testing</li>
+                  <li>✅ Cypress Cloud</li>
+                </ul>
+              </div>
+              <div class="col">
+                <ul class="fragment custom blur">
+                  <li>❌ no Promise</li>
+                  <ul>
+                    <li>no async/await</li>
+                    <li>no error hendler</li>
+                  </ul>
+                  <li>❌ .then() might cause callback hell</li>
+                  <li>❌ too many dependencies</li>
+                  <li>❌ can't run test parallely out-of-the-box</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Playwright</h3>
+          </section>
+          <section><h4>Playwright Test Runner</h4></section>
+          <section><h4>Playwright is asynchronous</h4></section>
+          <section><h4>Playwright is paralel</h4></section>
+          <section><h4>Playwrigth Trace Viewer</h4></section>
+          <section><h4>Playwright Fixtures</h4></section>
+          <section>
+            <h3>Puppeteer</h3>
+          </section>
+          <section>Summary</section>
+        </section>
+        <section>
+          <h3>Playwright vs Cypress vs Puppeteer</h3>
+        </section>
+        <section>
+          <h3>Trends in JS Testing & Beyond</h3>
+        </section>
+        <section>
+          <h1>Thank you!</h1>
+          <iframe
+            data-src="https://giphy.com/embed/vCKC987OpQAco">
+          </iframe>
+        </section>
+        <section>
+          <h3>Sources (Links)</h3>
+          <ul>
+            <li><a href="https://shorturl.at/ciSY8">NPM Trends - E2E Test Frameworks</a></li>
+            <li><a href="https://shorturl.at/uyMRV">NPM Trends - Unit Test Frameworks</a></li>
+            <li><a href="https://2022.stateofjs.com/en-US/">State of JS 2022</a></li>
+            <li><a href="https://github.com/emanuelef/daily-stars-explorer">GitHub Daily Stars Explore</a></li>
+          </ul>
         </section>
       </div>
     </div>
-    <script type="module" src="/main.js"></script>
+    <script type="module" src="/js/reveal.js"></script>
+    <script type="module" src="/charts/chart-github-e2e.js"></script>
+    <script type="module" src="/charts/chart-github-unit.js"></script>
+    <script type="module" src="/charts/chart-npm-e2e.js"></script>
+    <script type="module" src="/charts/chart-npm-unit.js"></script>
   </body>
 </html>
