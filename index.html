@@ -21,7 +21,7 @@
           <h2>Javascript Testing: Status & Trends</h2>
           <ul>
             <li class="fragment custom blur">State of Javascript Testing 2023</li>
-            <li class="fragment custom blur">JS Testing Frameworks: Cons & Pros</li>
+            <li class="fragment custom blur">JS Testing Frameworks - Core Concepts</li>
             <li class="fragment custom blur">Playwright vs Cypress vs Puppeteer</li>
             <li class="fragment custom blur">Trends in JS Testing & Beyond</li>
           </ul>
@@ -107,7 +107,7 @@ it('foo', async () => {
             </ul>
           </section>
           <section>
-            <h4>Cypress Aliases</h4>
+            <h4>Cypress Aliases & Fixtures</h4>
             <pre>
               <code>
 describe('foo', () => {
@@ -271,6 +271,7 @@ npx playwright test --shard=4/4
                   <li>✅ parallelism</li>
                   <li>✅ multilanguage: JS/TS, Java, C#, Python</li>
                   <li>✅ zero dependencies</li>
+                  <li>✅ trace viewer</li>
                 </ul>
               </div>
               <div class="col">
@@ -284,8 +285,28 @@ npx playwright test --shard=4/4
           </section>
           <section>
             <h3>Puppeteer</h3>
+            <div class="container summary">
+              <div class="col">
+                <ul class="fragment custom blur">
+                  <li>✅ Chrome Devtools Protocol</li>
+                  <li>✅ asynchronous</li>
+                  <li>✅ wait-retry-timeout</li>
+                  <li>✅ WebDriver BiDi support - experimental</li>
+                </ul>
+              </div>
+              <div class="col">
+                <ul class="fragment custom blur">
+                  <li>❌ support only chromium based browsers</li>
+                  <li>❌ no test runner</li>
+                  <li>❌ no visual debugging that offer cypress or playwright</li>
+                  <li>❌ parallelism</li>
+                  <li>❌ component testing</li>
+                  <li>❌ documentation</li>
+                  <li>❌ steeper learning curve</li>
+                </ul>
+              </div>
+            </div>
           </section>
-          <section>Summary</section>
         </section>
         <section>
           <h3>Playwright vs Cypress vs Puppeteer</h3>
